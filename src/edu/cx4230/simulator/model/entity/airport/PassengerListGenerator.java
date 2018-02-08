@@ -2,6 +2,7 @@ package edu.cx4230.simulator.model.entity.airport;
 
 import edu.cx4230.simulator.structs.Set;
 import edu.cx4230.simulator.util.Distributions;
+import edu.cx4230.simulator.util.Print;
 
 import static edu.cx4230.simulator.util.Constants.ARRIVAL_WINDOW;
 
@@ -36,13 +37,16 @@ public class PassengerListGenerator {
             }
             while (standbyStatus == PassengerStatus.REV || standbyStatus == PassengerStatus.S0);
             tempSet.add(new Passenger.Builder()
-                    .arrivalTime(departureTime - ARRIVAL_WINDOW + Distributions.passengerArrivalDistribution(flightNumber, false))
+                    .arrivalTime(Distributions.passengerArrivalDistribution(flightNumber, false))
                     .flightNumber(flightNumber)
                     .departureTime(departureTime)
                     .ticketPrice(0)
                     .passengerStatus(standbyStatus)
                     .build());
         }
+        Print.line("The flight FL" + flightNumber + "-" + departureTime + " has capacity " +
+                capacity + " and will be booked with " + numberOfPassengersBooked + "" +
+                " revenue passengers and " + numberOfStandbyPassengersScheduled + " non-rev passengers");
         return tempSet;
     }
 

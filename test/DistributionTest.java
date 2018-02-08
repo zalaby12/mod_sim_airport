@@ -1,6 +1,11 @@
 import edu.cx4230.simulator.util.Distributions;
 //import org.junit.jupiter.api.Test;
 import org.junit.Test;
+
+import java.util.Random;
+
+import static edu.cx4230.simulator.util.Constants.ARRIVAL_WINDOW;
+import static edu.cx4230.simulator.util.Constants.NUMBER_OF_FLIGHTS;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DistributionTest {
@@ -36,6 +41,16 @@ public class DistributionTest {
             assertEquals(true, false);
         }
 
+    }
+
+    @Test
+    public void passengerArrivalDistributionIsNonNegative() {
+        for (int numFlights = 2; numFlights < 100; numFlights++) {
+            int flightDeparture = ARRIVAL_WINDOW + new Random().nextInt(NUMBER_OF_FLIGHTS * ARRIVAL_WINDOW);
+            for (double lambda = 0; lambda <= 1; lambda += 0.25) {
+                assertTrue(Distributions.passengerArrivalDistribution(flightDeparture, false) >= 0);
+            }
+        }
     }
 
 }
