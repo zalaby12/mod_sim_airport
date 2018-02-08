@@ -94,7 +94,7 @@ public class Flight implements Writeable{
 
     @Override
     public String fileName() {
-        return "Flight number FL" + flightNumber + "-" + departureTime;
+        return "FL" + flightNumber + "-" + departureTime;
     }
 
     @Override
