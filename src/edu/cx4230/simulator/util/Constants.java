@@ -2,9 +2,9 @@ package edu.cx4230.simulator.util;
 
 public class Constants {
 
-    public static final int NUMBER_OF_FLIGHTS = 2;
+    public static final int NUMBER_OF_FLIGHTS = 500;
 
-    public static final int NUMBER_OF_FLIGHTS_PER_ROUTE = 2;
+    public static final int NUMBER_OF_FLIGHTS_PER_ROUTE = 10;
 
     public static final double PERCENT_ON_TIME = .95;
 

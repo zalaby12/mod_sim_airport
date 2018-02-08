@@ -28,10 +28,10 @@ public class SchedulingTest {
         assertEquals(13, scheduler.getNumFlightsScheduled());
     }
 
-    @Ignore
+    @Test
     public void stressTestAmount() {
-        FlightScheduler scheduler = new FlightScheduler(10000, 100);
-        assertEquals(100, scheduler.getNumRoutesScheduled());
-        assertEquals(10000, scheduler.getNumFlightsScheduled());
+        FlightScheduler scheduler = new FlightScheduler(100, 10);
+        assertEquals(10, scheduler.getNumRoutesScheduled());
+        assertEquals(100, scheduler.getNumFlightsScheduled());
     }
 }
