@@ -45,7 +45,7 @@ public class DistributionTest {
 
     @Test
     public void passengerArrivalDistributionIsNonNegative() {
-        for (int numFlights = 2; numFlights < 100; numFlights++) {
+        for (int numFlights = 2; numFlights < 10000; numFlights++) {
             int flightDeparture = ARRIVAL_WINDOW + new Random().nextInt(NUMBER_OF_FLIGHTS * ARRIVAL_WINDOW);
             for (double lambda = 0; lambda <= 1; lambda += 0.25) {
                 assertTrue(Distributions.passengerArrivalDistribution(flightDeparture, false) >= 0);

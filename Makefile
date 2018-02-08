@@ -3,7 +3,7 @@ FLIGHTS = flights/
 OUTPUT_JAR_MAIN = sim.jar
 MANIFEST_MAIN = src/MANIFEST-MAIN.MF
 
-all: 
+all: clean
 	@echo Compiling...
 	@mkdir -p $(OUTPUT_BIN)
 	@mkdir -p $(FLIGHTS)

@@ -16,6 +16,8 @@ public class Set<T> implements Iterable<T> {
     public void add(T t) {
         if (!backingList.contains(t)) {
             backingList.add(t);
+        } else {
+            System.out.println("Found a collision with " + t.toString());
         }
     }
 

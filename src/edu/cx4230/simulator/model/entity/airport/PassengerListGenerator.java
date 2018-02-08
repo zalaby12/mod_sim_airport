@@ -21,7 +21,7 @@ public class PassengerListGenerator {
         Set<Passenger> tempSet = new Set<>();
         for (int i = 0; i < numberOfPassengersBooked; i++) {
             tempSet.add(new Passenger.Builder()
-                    .arrivalTime(departureTime - ARRIVAL_WINDOW + Distributions.passengerArrivalDistribution(flightNumber, false))
+                    .arrivalTime(Distributions.passengerArrivalDistribution(departureTime, false))
                     .flightNumber(flightNumber)
                     .departureTime(departureTime)
                     .ticketPrice(Distributions.ticketPriceDistribution())
@@ -37,7 +37,7 @@ public class PassengerListGenerator {
             }
             while (standbyStatus == PassengerStatus.REV || standbyStatus == PassengerStatus.S0);
             tempSet.add(new Passenger.Builder()
-                    .arrivalTime(Distributions.passengerArrivalDistribution(flightNumber, false))
+                    .arrivalTime(Distributions.passengerArrivalDistribution(departureTime, false))
                     .flightNumber(flightNumber)
                     .departureTime(departureTime)
                     .ticketPrice(0)
