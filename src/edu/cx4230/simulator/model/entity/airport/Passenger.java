@@ -1,5 +1,7 @@
 package edu.cx4230.simulator.model.entity.airport;
 
+import edu.cx4230.simulator.util.Constants;
+
 public class Passenger implements Comparable<Passenger> {
 
     private int arrivalTime;
@@ -80,4 +82,12 @@ public class Passenger implements Comparable<Passenger> {
         return false;
     }
 
+    @Override
+    public String toString() {
+        String toString = "";
+        toString += "Passenger " + arrivalTime + " for flight FL" + flightNumber + "-" + departureTime + "\n";
+        toString += "Scheduled to arrive " + (arrivalTime >= departureTime - Constants.BOARDING_DOOR_CLOSE_WINDOW ? "late" : "on time") + "\n";
+        toString += "Paid $" + ticketPrice + " and has status " + passengerStatus + "\n";
+        return toString;
+    }
 }

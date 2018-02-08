@@ -24,18 +24,18 @@ public class DistributionTest {
         if ((numBefore95Percent / trials) >= ninety_five_percent - .01 ||
                 (numBefore95Percent / trials) <= ninety_five_percent + .01) {
             assertEquals(true, true, "between valid parameters");
+            System.out.println("approximately " + (numBefore95Percent / trials) + " were before " + ninety_five_percent);
         } else {
             assertEquals(true, false);
         }
 
         if ((sum / trials) >= expectedValue - .1 || (sum / trials) <= expectedValue + .1) {
+            System.out.println("expected value is " + expectedValue + " and the average was " + sum / trials);
             assertEquals(true, true, "between valid parameters");
         } else {
             assertEquals(true, false);
         }
 
-        System.out.println("approximately " + (numBefore95Percent / trials) + " were before " + ninety_five_percent);
-        System.out.println("expected value is " + expectedValue + " and the average was " + sum / trials);
     }
 
 }
