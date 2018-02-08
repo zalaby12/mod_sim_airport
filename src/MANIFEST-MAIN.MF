@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: edu.cx4230.simulator.App
