@@ -9,6 +9,7 @@ public class Passenger implements Comparable<Passenger> {
     private int departureTime;
     private int ticketPrice;
     private int compensationAmount;
+    private String id;
     private boolean hasBeenScheduledToArrive;
     private PassengerStatus passengerStatus;
 
@@ -18,6 +19,7 @@ public class Passenger implements Comparable<Passenger> {
         this.departureTime = builder.departureTime;
         this.ticketPrice = builder.ticketPrice;
         this.passengerStatus = builder.passengerStatus;
+        this.id = builder.id;
         this.compensationAmount = 0;
         this.hasBeenScheduledToArrive = false;
     }
@@ -34,6 +36,7 @@ public class Passenger implements Comparable<Passenger> {
         private int flightNumber;
         private int departureTime;
         private int ticketPrice;
+        private String id;
         private PassengerStatus passengerStatus;
 
         Builder arrivalTime(int arrivalTime) {
@@ -61,6 +64,10 @@ public class Passenger implements Comparable<Passenger> {
             return this;
         }
 
+        Builder id(String id) {
+            this.id = id;
+            return this;
+        }
         Passenger build() {
             return new Passenger(this);
         }
@@ -75,7 +82,8 @@ public class Passenger implements Comparable<Passenger> {
                     temp.departureTime == this.departureTime &&
                     temp.ticketPrice == this.ticketPrice &&
                     temp.passengerStatus == this.passengerStatus &&
-                    temp.compensationAmount == this.compensationAmount) {
+                    temp.compensationAmount == this.compensationAmount &&
+                    this.id.equals(temp.id)) {
                 return true;
             }
         }

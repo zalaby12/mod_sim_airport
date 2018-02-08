@@ -11,26 +11,27 @@ public class PassengerListGenerator {
     private Set<Passenger> bookedPassengers;
     private PassengerStatus[] status = PassengerStatus.values();
 
-    // TODO write a test for the set to make sure it works right.... fuck meeeeee
     public PassengerListGenerator(int flightNumber, int departureTime, int capacity) {
         this.bookedPassengers = bookPassengers(flightNumber, departureTime, capacity);
     }
 
     private Set<Passenger> bookPassengers(int flightNumber, int departureTime, int capacity) {
         int numberOfPassengersBooked = Distributions.passengerDensityDistribution(capacity);
+        int id = 0;
         Set<Passenger> tempSet = new Set<>();
-        for (int i = 0; i < numberOfPassengersBooked; i++) {
+        for (int i = 0; i < numberOfPassengersBooked; i++, id++) {
             tempSet.add(new Passenger.Builder()
                     .arrivalTime(Distributions.passengerArrivalDistribution(departureTime, false))
                     .flightNumber(flightNumber)
                     .departureTime(departureTime)
                     .ticketPrice(Distributions.ticketPriceDistribution())
                     .passengerStatus(PassengerStatus.REV)
+                    .id("FL" + flightNumber + "-" + departureTime + "-" + id)
                     .build());
         }
 
         int numberOfStandbyPassengersScheduled = Distributions.standbyListDensityDistribution(capacity);
-        for (int i = 0; i < numberOfStandbyPassengersScheduled; i++) {
+        for (int i = 0; i < numberOfStandbyPassengersScheduled; i++, id++) {
             PassengerStatus standbyStatus;
             do {
                 standbyStatus = status[Distributions.uniformDistributionWithLimit(status.length)];
@@ -42,6 +43,7 @@ public class PassengerListGenerator {
                     .departureTime(departureTime)
                     .ticketPrice(0)
                     .passengerStatus(standbyStatus)
+                    .id("FL" + flightNumber + "-" + departureTime + "-" + id)
                     .build());
         }
         Print.line("The flight FL" + flightNumber + "-" + departureTime + " has capacity " +

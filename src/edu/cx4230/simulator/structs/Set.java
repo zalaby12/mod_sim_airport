@@ -1,5 +1,7 @@
 package edu.cx4230.simulator.structs;
 
+import edu.cx4230.simulator.util.Print;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Set<T> implements Iterable<T> {
         if (!backingList.contains(t)) {
             backingList.add(t);
         } else {
-            System.out.println("Found a collision with " + t.toString());
+            Print.line("Found a collision with " + t.toString());
         }
     }
 
