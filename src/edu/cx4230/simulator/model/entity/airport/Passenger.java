@@ -32,11 +32,17 @@ public class Passenger implements Comparable<Passenger> {
 
     public PassengerStatus getPassengerStatus() { return this.passengerStatus; }
 
+    public int getCompensationAmount() { return this.compensationAmount; }
+
     public void addToTicketPrice(int value) { this.ticketPrice += value; }
+
+    public void addToCompensationAmount(int value) { this.compensationAmount += value; }
 
     public void setDepartureTime(int value) { this.departureTime = value; }
 
     public void setId(String id) { this.id = id; }
+
+    public void upgradeOverbookedToStandby() { this.passengerStatus = PassengerStatus.S0; }
 
     static class Builder {
 

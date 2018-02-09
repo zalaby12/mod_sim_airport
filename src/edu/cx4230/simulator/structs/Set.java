@@ -21,7 +21,7 @@ public class Set<T> implements Iterable<T> {
             size++;
             backingList.add(t);
         } else {
-            Print.line("Found a collision with " + t.toString());
+                Print.line("Found a collision");
         }
     }
 

@@ -1,9 +1,10 @@
 package edu.cx4230.simulator.structs;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PriorityQueue<T extends Comparable<? super T>> {
+public class PriorityQueue<T extends Comparable<? super T>> implements Iterable<T>{
 
     private List<T> backingList;
     private int size;
@@ -35,6 +36,18 @@ public class PriorityQueue<T extends Comparable<? super T>> {
             return backingList.get(0);
         }
         return null;
+    }
+
+    public T remove(int index) {
+        if (index >= this.size) {
+            return null;
+        } else {
+            return this.backingList.remove(index);
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return backingList.iterator();
     }
 
     private int findInsertPoint(List<T> list, T t) {

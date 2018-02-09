@@ -20,4 +20,10 @@ public class Constants {
 
     public static final double TICKET_PRICE_STANDARD_DEVIATION = 100;
 
+    public static final double COMPENSATION_AMOUNT_MEAN = 891;
+
+    public static final double COMPENSATION_AMOUNT_STANDARD_DEVIATION = 50;
+
+    public static final int EVENT_ERROR_CODE = -1;
+
 }

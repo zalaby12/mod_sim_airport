@@ -24,7 +24,9 @@ public class Arrival extends AirportEvent {
                 flight.addToStandbyList(this.passenger);
             }
         } else {
-            model.reschedulePassenger(this.passenger);
+            if (this.passenger.getPassengerStatus() == PassengerStatus.REV) {
+                model.rescheduleLateArrival(this.passenger);
+            }
         }
         return this.getTimestamp();
     }

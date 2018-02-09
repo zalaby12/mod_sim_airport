@@ -3,14 +3,12 @@ package edu.cx4230.simulator.model.entity.airport;
 import edu.cx4230.simulator.model.events.Event;
 import edu.cx4230.simulator.model.events.airport.Arrival;
 import edu.cx4230.simulator.structs.FutureEventList;
-import edu.cx4230.simulator.util.Constants;
 import edu.cx4230.simulator.util.Distributions;
 import edu.cx4230.simulator.util.Print;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public class FlightScheduler {
 
@@ -31,7 +29,6 @@ public class FlightScheduler {
 
     public List<Flight> getFlights() { return this.listOfFlights; }
 
-    // TODO -> add the boardingdoorclose event here
     private void scheduleFlights(int numberOfFlights, int flightsPerRoute) {
         int flightsScheduled = 0;
         int flightNumber = 0;
@@ -42,8 +39,11 @@ public class FlightScheduler {
                 FlightGenerator flightGenerator = new FlightGenerator(flightNumber, Distributions.flightDepartureDistribution());
                 Print.writer(flightGenerator.getFlight());
                 this.listOfFlights.add(flightGenerator.getFlight());
+                allEvents.add(new BoardingDoorClose(flightGenerator.getFlight()));
                 for (Passenger passenger : flightGenerator.getPassengerList()) {
-                    numPassengers++;
+                    if (passenger.getPassengerStatus() == PassengerStatus.REV) {
+                        numPassengers++;
+                    }
                     allEvents.add(new Arrival(passenger));
                 }
                 flightsScheduled++;

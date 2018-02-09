@@ -44,6 +44,10 @@ public class Distributions {
         return (int) Math.round(gaussianDistribution(TICKET_PRICE_MEAN, TICKET_PRICE_STANDARD_DEVIATION));
     }
 
+    public static int compensationDistribution() {
+        return (int) Math.round(gaussianDistribution(COMPENSATION_AMOUNT_MEAN, COMPENSATION_AMOUNT_STANDARD_DEVIATION));
+    }
+
     public static double testExponential(double lambda) {
         return exponentialDistribution(lambda);
     }

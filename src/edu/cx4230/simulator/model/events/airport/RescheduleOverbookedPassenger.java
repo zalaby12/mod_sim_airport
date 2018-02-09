@@ -6,11 +6,11 @@ import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
 import edu.cx4230.simulator.util.Distributions;
 
-public class RescheduleLateArrival extends AirportEvent {
+public class RescheduleOverbookedPassenger extends AirportEvent {
 
     private Passenger passenger;
 
-    public RescheduleLateArrival(Passenger passenger) {
+    public RescheduleOverbookedPassenger(Passenger passenger) {
         super(passenger.getArrivalTime());
         this.passenger = passenger;
     }
@@ -18,16 +18,18 @@ public class RescheduleLateArrival extends AirportEvent {
     @Override
     public int executeEvent(AirportModel model) {
         Flight nextFlight = model.getNextFlight(this.passenger.getFlightNumber(), this.passenger.getDepartureTime());
+        this.passenger.addToCompensationAmount(Distributions.compensationDistribution());
+        model.addOverbookedPassenger(this.passenger);
         if (nextFlight == null) {
             return Constants.EVENT_ERROR_CODE;
         }
         int numberOfBookedPassengersOnNextFlight = nextFlight.getSizeOfBoardingList();
         String newPassengerId = "FL" + this.passenger.getFlightNumber() + "-" +
                 nextFlight.getDepartureTime() + "-" + (numberOfBookedPassengersOnNextFlight + 1);
-        this.passenger.addToTicketPrice(Distributions.ticketPriceDistribution());
         this.passenger.setDepartureTime(nextFlight.getDepartureTime());
         this.passenger.setId(newPassengerId);
-        nextFlight.addToBoardingList(this.passenger);
+        this.passenger.upgradeOverbookedToStandby();
+        nextFlight.addToStandbyList(this.passenger);
         return this.getTimestamp();
     }
 }

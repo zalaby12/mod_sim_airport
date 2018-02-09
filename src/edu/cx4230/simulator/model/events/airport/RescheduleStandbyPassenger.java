@@ -4,13 +4,12 @@ import edu.cx4230.simulator.model.entity.airport.Flight;
 import edu.cx4230.simulator.model.entity.airport.Passenger;
 import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
-import edu.cx4230.simulator.util.Distributions;
 
-public class RescheduleLateArrival extends AirportEvent {
+public class RescheduleStandbyPassenger extends AirportEvent {
 
     private Passenger passenger;
 
-    public RescheduleLateArrival(Passenger passenger) {
+    public RescheduleStandbyPassenger(Passenger passenger) {
         super(passenger.getArrivalTime());
         this.passenger = passenger;
     }
@@ -21,13 +20,12 @@ public class RescheduleLateArrival extends AirportEvent {
         if (nextFlight == null) {
             return Constants.EVENT_ERROR_CODE;
         }
-        int numberOfBookedPassengersOnNextFlight = nextFlight.getSizeOfBoardingList();
+        int numberOfBookedPassengersOnNextStandbyList = nextFlight.getStandbyList().size();
         String newPassengerId = "FL" + this.passenger.getFlightNumber() + "-" +
-                nextFlight.getDepartureTime() + "-" + (numberOfBookedPassengersOnNextFlight + 1);
-        this.passenger.addToTicketPrice(Distributions.ticketPriceDistribution());
+                nextFlight.getDepartureTime() + "-" + (numberOfBookedPassengersOnNextStandbyList + 1);
         this.passenger.setDepartureTime(nextFlight.getDepartureTime());
         this.passenger.setId(newPassengerId);
-        nextFlight.addToBoardingList(this.passenger);
+        nextFlight.addToStandbyList(this.passenger);
         return this.getTimestamp();
     }
 }

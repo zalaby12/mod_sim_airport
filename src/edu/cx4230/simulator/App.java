@@ -24,13 +24,17 @@ public class App {
 
     SimulationEngine engine = new AirportSimulationEngine(NUMBER_OF_FLIGHTS, NUMBER_OF_FLIGHTS_PER_ROUTE);
     runSimulation(engine);
+    printResults(engine);
 
     long end = System.currentTimeMillis();
+
     System.out.println("The simulation took " + ((end - start) / 1000.0) + " seconds");
 
   }
 
   private static void runSimulation(SimulationEngine engine) { engine.runSimulation(); }
+
+  private static void printResults(SimulationEngine engine) { engine.printResults(); }
 
   public static boolean debugOn() { return DEBUG_ON; }
 

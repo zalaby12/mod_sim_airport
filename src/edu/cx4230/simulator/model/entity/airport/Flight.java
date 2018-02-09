@@ -20,7 +20,6 @@ public class Flight implements Writeable {
         this.capacity = builder.capacity;
         this.boardingDoorIsClosed = builder.boardingDoorIsClosed;
         this.bookedPassengers = builder.bookedPassengers;
-        this.isOverbooked = false;
         this.boardingList = new Set<>();
         this.standbyList = new PriorityQueue<>();
     }
