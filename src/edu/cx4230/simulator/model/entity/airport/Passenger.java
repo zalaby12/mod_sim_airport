@@ -24,21 +24,16 @@ public class Passenger implements Comparable<Passenger> {
         this.hasBeenScheduledToArrive = false;
     }
 
-    @Override
-    public int compareTo(Passenger passenger) {
-        return passenger.passengerStatus.asInt() - this.passengerStatus.asInt();
-    }
-
     public int getArrivalTime() { return this.arrivalTime; }
 
     static class Builder {
+
         private int arrivalTime;
         private int flightNumber;
         private int departureTime;
         private int ticketPrice;
         private String id;
         private PassengerStatus passengerStatus;
-
         Builder arrivalTime(int arrivalTime) {
             this.arrivalTime = arrivalTime;
             return this;
@@ -68,9 +63,15 @@ public class Passenger implements Comparable<Passenger> {
             this.id = id;
             return this;
         }
+
         Passenger build() {
             return new Passenger(this);
         }
+    }
+
+    @Override
+    public int compareTo(Passenger passenger) {
+        return passenger.passengerStatus.asInt() - this.passengerStatus.asInt();
     }
 
     @Override

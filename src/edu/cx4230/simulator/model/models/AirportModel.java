@@ -6,6 +6,7 @@ import edu.cx4230.simulator.model.entity.airport.FlightScheduler;
 import edu.cx4230.simulator.model.events.airport.AirportEvent;
 import edu.cx4230.simulator.model.events.Event;
 import edu.cx4230.simulator.structs.FutureEventList;
+import edu.cx4230.simulator.util.Print;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AirportModel implements Modeler {
     public AirportModel(int numberOfFlights, int flightsPerRoute) {
         this.scheduler = new FlightScheduler(numberOfFlights, flightsPerRoute);
         this.flights = scheduler.getFlights();
+        Print.line("the model scheduled " + this.flights.size() + " flights and " + this.scheduler.getNumPassengers() + " passengers.");
     }
 
     @Override
