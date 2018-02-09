@@ -3,8 +3,10 @@ package edu.cx4230.simulator.model.models;
 
 import edu.cx4230.simulator.model.entity.airport.Flight;
 import edu.cx4230.simulator.model.entity.airport.FlightScheduler;
+import edu.cx4230.simulator.model.entity.airport.Passenger;
 import edu.cx4230.simulator.model.events.airport.AirportEvent;
 import edu.cx4230.simulator.model.events.Event;
+import edu.cx4230.simulator.model.events.airport.RescheduleLateArrival;
 import edu.cx4230.simulator.structs.FutureEventList;
 import edu.cx4230.simulator.util.Print;
 
@@ -45,8 +47,27 @@ public class AirportModel implements Modeler {
         return null;
     }
 
+    public Flight getNextFlight(int flightNumber, int departureTime) {
+        int min = Integer.MAX_VALUE;
+        Flight nextFlight = null;
+        for (Flight flight : flights) {
+            if (flight.getFlightNumber() == flightNumber &&
+                    flight.getDepartureTime() >= departureTime &&
+                    flight.getDepartureTime() < min &&
+                    !flight.boardingDoorIsClosed()) {
+                min = flight.getDepartureTime();
+                nextFlight = flight;
+            }
+        }
+        return nextFlight;
+    }
+
     private int processEvent(AirportModel model, AirportEvent event) {
         return event.executeEvent(model);
+    }
+
+    public void reschedulePassenger(Passenger passenger) {
+        this.scheduler.getEventList().push(new RescheduleLateArrival(passenger));
     }
 
 }

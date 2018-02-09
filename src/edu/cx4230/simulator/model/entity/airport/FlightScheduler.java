@@ -31,6 +31,7 @@ public class FlightScheduler {
 
     public List<Flight> getFlights() { return this.listOfFlights; }
 
+    // TODO -> add the boardingdoorclose event here
     private void scheduleFlights(int numberOfFlights, int flightsPerRoute) {
         int flightsScheduled = 0;
         int flightNumber = 0;
@@ -41,7 +42,6 @@ public class FlightScheduler {
                 FlightGenerator flightGenerator = new FlightGenerator(flightNumber, Distributions.flightDepartureDistribution());
                 Print.writer(flightGenerator.getFlight());
                 this.listOfFlights.add(flightGenerator.getFlight());
-                // TODO -> add the boardingdoorclose event here
                 for (Passenger passenger : flightGenerator.getPassengerList()) {
                     numPassengers++;
                     allEvents.add(new Arrival(passenger));

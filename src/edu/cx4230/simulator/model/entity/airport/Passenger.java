@@ -26,6 +26,18 @@ public class Passenger implements Comparable<Passenger> {
 
     public int getArrivalTime() { return this.arrivalTime; }
 
+    public int getFlightNumber() { return this.flightNumber; }
+
+    public int getDepartureTime() { return this.departureTime; }
+
+    public PassengerStatus getPassengerStatus() { return this.passengerStatus; }
+
+    public void addToTicketPrice(int value) { this.ticketPrice += value; }
+
+    public void setDepartureTime(int value) { this.departureTime = value; }
+
+    public void setId(String id) { this.id = id; }
+
     static class Builder {
 
         private int arrivalTime;

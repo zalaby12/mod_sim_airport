@@ -4,7 +4,7 @@ import edu.cx4230.simulator.structs.PriorityQueue;
 import edu.cx4230.simulator.structs.Set;
 import edu.cx4230.simulator.util.Writeable;
 
-public class Flight implements Writeable{
+public class Flight implements Writeable {
 
     private int flightNumber;
     private int departureTime;
@@ -20,6 +20,7 @@ public class Flight implements Writeable{
         this.capacity = builder.capacity;
         this.boardingDoorIsClosed = builder.boardingDoorIsClosed;
         this.bookedPassengers = builder.bookedPassengers;
+        this.isOverbooked = false;
         this.boardingList = new Set<>();
         this.standbyList = new PriorityQueue<>();
     }
@@ -76,6 +77,14 @@ public class Flight implements Writeable{
     public Set<Passenger> getBoardingList() { return this.boardingList; }
 
     public PriorityQueue<Passenger> getStandbyList() { return this.standbyList; }
+
+    public int getSizeOfBoardingList() { return this.boardingList.size(); }
+
+    public void addToBoardingList(Passenger passenger) { this.boardingList.add(passenger); }
+
+    public void addToStandbyList(Passenger passenger) { this.standbyList.push(passenger); }
+
+    public boolean isOverbooked() { return this.boardingList.size() > this.capacity; }
 
     @Override
     public String toString() {
