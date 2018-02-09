@@ -30,7 +30,7 @@ public class Distributions {
     // this also happens to give a nice lower bound for the number of passengers
     public static int passengerDensityDistribution(int capacity) {
         int differenceBetweenCapacityAndStandardOverbooking = (int) Math.round((capacity * (1 + PERCENT_OVERBOOKED)) - capacity);
-        return (int) Math.round(gaussianDistribution(capacity, differenceBetweenCapacityAndStandardOverbooking));
+        return (int) Math.round(gaussianDistribution((capacity * (1 + PERCENT_OVERBOOKED)), differenceBetweenCapacityAndStandardOverbooking));
     }
 
     // also a pretty hefty guess, but we are going to assume the number of people

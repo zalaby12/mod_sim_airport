@@ -81,11 +81,12 @@ public class AirportModel implements Modeler {
 
     @Override
     public void printResults() {
-        System.out.println("\n\n\n");
+        Print.line("\n\n");
         System.out.println("There were " + this.overbookedPassengers.size() +
                 " overbooked passengers out of " + this.scheduler.getNumPassengers());
-        System.out.println("Percent overbooked: " + (10.0 * this.overbookedPassengers.size() / this.scheduler.getNumPassengers()));
-        System.out.println("Their total compensation was " + this.totalCompensation());
+        System.out.println("Percent overbooked: " + (100.0 * this.overbookedPassengers.size() / this.scheduler.getNumPassengers()));
+        System.out.println("Their total compensation was " + this.totalCompensation() +
+                " for an an average of $" + (this.totalCompensation() / this.overbookedPassengers.size()));
     }
 
     private int totalCompensation() {
