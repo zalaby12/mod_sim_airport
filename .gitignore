@@ -1,3 +1,5 @@
 .idea/workspace.xml
 .idea/*
 simulation.iml
+out/
+flights/
