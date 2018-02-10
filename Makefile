@@ -27,3 +27,6 @@ verbose: clean compile
 	@echo "Starting simulation."
 	@java -jar $(OUTPUT_JAR_MAIN) -v
 	@echo "Done."
+
+
+jar: clean compile
