@@ -1,6 +1,6 @@
-To run on environments with the java compiler run: 
+To run on environments with the java compiler: 
 ```
-  "make"
+  make
 ```
 
 If "command not found", run 
