@@ -1,10 +1,9 @@
-To run: 
-
+To run on environments with the java compiler run: 
 ```
-  type "make"
+  "make"
 ```
 
-If command not found, run 
+If "command not found", run 
   ```
   make jar
   ```
