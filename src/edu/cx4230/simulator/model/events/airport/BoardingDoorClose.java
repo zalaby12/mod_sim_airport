@@ -1,5 +1,7 @@
-package edu.cx4230.simulator.model.entity.airport;
+package edu.cx4230.simulator.model.events.airport;
 
+import edu.cx4230.simulator.model.entity.airport.Flight;
+import edu.cx4230.simulator.model.entity.airport.Passenger;
 import edu.cx4230.simulator.model.events.airport.AirportEvent;
 import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;

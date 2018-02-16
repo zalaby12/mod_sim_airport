@@ -2,6 +2,7 @@ package edu.cx4230.simulator.model.entity.airport;
 
 import edu.cx4230.simulator.model.events.Event;
 import edu.cx4230.simulator.model.events.airport.Arrival;
+import edu.cx4230.simulator.model.events.airport.BoardingDoorClose;
 import edu.cx4230.simulator.structs.FutureEventList;
 import edu.cx4230.simulator.util.Distributions;
 import edu.cx4230.simulator.util.Print;
