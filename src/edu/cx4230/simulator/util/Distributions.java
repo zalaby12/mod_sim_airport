@@ -60,6 +60,8 @@ public class Distributions {
         return Math.log(1 - fx) / -x;
     }
 
+    // inverse CDF method
+    // https://stackoverflow.com/questions/2106503/pseudorandom-number-generator-exponential-distribution
     private static double exponentialDistribution(double lambda) {
         return Math.log(1 - generator.nextDouble()) / -lambda;
     }

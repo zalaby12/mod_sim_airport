@@ -8,6 +8,7 @@ import edu.cx4230.simulator.util.Print;
 import static edu.cx4230.simulator.util.Constants.NUMBER_OF_FLIGHTS;
 import static edu.cx4230.simulator.util.Constants.NUMBER_OF_FLIGHTS_PER_ROUTE;
 
+// TODO -> figure out total made by the airlines... add to another group when they actually board the plane
 public class App {
 
   public static boolean DEBUG_ON = false;
