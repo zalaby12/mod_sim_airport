@@ -6,6 +6,12 @@ import edu.cx4230.simulator.util.Print;
 
 import static edu.cx4230.simulator.util.Constants.ARRIVAL_WINDOW;
 
+/*
+ * This class will create a single passenger list based on an exponential distribution
+ * for arrival time and a normal distribution for ticket prices. It also schedules
+ * standby passengers based on a narrow Gaussian distribution.
+ *
+ */
 public class PassengerListGenerator {
 
     private Set<Passenger> bookedPassengers;

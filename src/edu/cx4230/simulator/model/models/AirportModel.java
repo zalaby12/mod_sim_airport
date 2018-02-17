@@ -15,8 +15,12 @@ import edu.cx4230.simulator.util.Print;
 
 import java.util.List;
 
-// Classes that extend model can be the information holders, since they don't
-// do much of anything, anyway.
+/*
+ * Narrows down the Model used for the airport simulation. This class also helps
+ * with tracking all flights scheduled, and the overbooked passengers in the
+ * simulation. The information holder for the program when it runs, it also helps
+ * "reschedule" events to be pushed in the correct direction.
+ */
 public class AirportModel implements Modeler {
 
     private List<Flight> flights;

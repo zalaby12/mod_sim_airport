@@ -1,7 +1,6 @@
 import edu.cx4230.simulator.model.entity.airport.PassengerStatus;
 import edu.cx4230.simulator.structs.FutureEventList;
 import edu.cx4230.simulator.structs.PriorityQueue;
-//import org.junit.jupiter.api.Test;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -10,6 +9,10 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/*
+ * This tests the functionality of the priority queue using both built-in types
+ * and types specific to the airport model/simulation
+ */
 public class PriorityQueueTest {
 
     @Test

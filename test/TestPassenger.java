@@ -1,5 +1,9 @@
 import edu.cx4230.simulator.model.entity.airport.PassengerStatus;
 
+/*
+ * Passenger used for testing, using an ID to distinguish between unique
+ * entities instead of flight number and departure time.
+ */
 public class TestPassenger implements Comparable<TestPassenger> {
 
     PassengerStatus status;

@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+/*
+ * Basically a set but with no repeats.
+ */
 public class Set<T> implements Iterable<T> {
 
     private List<T> backingList;

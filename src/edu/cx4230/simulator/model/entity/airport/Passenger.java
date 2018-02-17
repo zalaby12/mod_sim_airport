@@ -2,6 +2,11 @@ package edu.cx4230.simulator.model.entity.airport;
 
 import edu.cx4230.simulator.util.Constants;
 
+/*
+ * Models a passenger using the basic information listed below as private variables.
+ * The class includes it's own builder class to aid with construction during
+ * flight generation. Mostly contains simple getters, and a few setters.
+ */
 public class Passenger implements Comparable<Passenger> {
 
     private int arrivalTime;

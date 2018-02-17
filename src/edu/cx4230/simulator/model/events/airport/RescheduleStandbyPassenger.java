@@ -5,6 +5,11 @@ import edu.cx4230.simulator.model.entity.airport.Passenger;
 import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
 
+/*
+ * Rebooking standby passengers simply moves them to the standby list on the
+ * next available flight. If that does not exist, we are near the end of the simulation
+ * and nothing happens.
+ */
 public class RescheduleStandbyPassenger extends AirportEvent {
 
     private Passenger passenger;

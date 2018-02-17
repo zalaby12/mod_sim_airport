@@ -1,5 +1,4 @@
 import edu.cx4230.simulator.util.Distributions;
-//import org.junit.jupiter.api.Test;
 import org.junit.Test;
 
 import java.util.Random;
@@ -8,6 +7,11 @@ import static edu.cx4230.simulator.util.Constants.ARRIVAL_WINDOW;
 import static edu.cx4230.simulator.util.Constants.NUMBER_OF_FLIGHTS;
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+ * This tests ensures my calculations about distributions were correct.
+ * It polls from the exponential distribution with a given lambda and ensures
+ * the range for the first 95% (WLOG) is predictable.
+ */
 public class DistributionTest {
 
     @Test
@@ -43,6 +47,10 @@ public class DistributionTest {
 
     }
 
+    /*
+     * This ensures that passenger arrivals will be non-negative and fit within the
+     * bounds of the observation space.
+     */
     @Test
     public void passengerArrivalDistributionIsNonNegative() {
         for (int numFlights = 2; numFlights < 10000; numFlights++) {

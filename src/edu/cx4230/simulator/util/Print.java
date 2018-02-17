@@ -4,6 +4,9 @@ import edu.cx4230.simulator.App;
 
 import java.io.PrintWriter;
 
+/*
+ * Automatic debugging output turned on or off.... wow this is nice.
+ */
 public class Print {
 
     public static final String FOLDER = "./FLIGHTS/";

@@ -6,6 +6,13 @@ import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
 import edu.cx4230.simulator.util.Distributions;
 
+/*
+ * If a passenger arrives late, they pay for an additional ticket and are put
+ * on the next available flight's boarding list. This assumes they are able to
+ * make it immediately to the gate for the next flight. If there is no flight
+ * available after this one, we are near the end of the simulation and nothing
+ * happens
+ */
 public class RescheduleLateArrival extends AirportEvent {
 
     private Passenger passenger;

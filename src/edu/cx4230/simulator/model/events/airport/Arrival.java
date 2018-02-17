@@ -5,6 +5,12 @@ import edu.cx4230.simulator.model.entity.airport.PassengerStatus;
 import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.model.entity.airport.Passenger;
 
+/*
+ * Simulates the arrival of a passenger. The semantics of this event are pretty
+ * well understood. If they're on-time they get put in either the standby list
+ * or boarding list (if they're a rev passenger). If they're late, they get
+ * rescheduled for another flight.
+ */
 public class Arrival extends AirportEvent {
 
     private Passenger passenger;

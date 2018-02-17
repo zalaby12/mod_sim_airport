@@ -4,6 +4,10 @@ import java.util.Random;
 
 import static edu.cx4230.simulator.util.Constants.*;
 
+/*
+ * What they say they are. All are based on best guesses because that's the information
+ * I had to work with.
+ */
 public class Distributions {
 
     private static Random generator = new Random();

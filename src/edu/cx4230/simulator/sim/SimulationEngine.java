@@ -2,6 +2,10 @@ package edu.cx4230.simulator.sim;
 
 import edu.cx4230.simulator.model.models.Modeler;
 
+/*
+ * Generic simulation engine that can be used for any DES that conforms to the
+ * given interfaces.
+ */
 public abstract class SimulationEngine {
   // probably need to make this a long??
   private int currentTime;

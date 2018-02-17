@@ -4,6 +4,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * Generic priority queue featuring iteration and sorting. Uses a simple list as
+ * the backing structure.
+ */
 public class PriorityQueue<T extends Comparable<? super T>> implements Iterable<T>{
 
     private List<T> backingList;

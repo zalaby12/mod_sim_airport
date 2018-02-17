@@ -2,8 +2,14 @@ package edu.cx4230.simulator.model.entity.airport;
 
 import edu.cx4230.simulator.structs.PriorityQueue;
 import edu.cx4230.simulator.structs.Set;
+import edu.cx4230.simulator.structs.StandbyList;
 import edu.cx4230.simulator.util.Writeable;
 
+/*
+ * Models a flight using the basic information listed below as private variables.
+ * The class includes it's own builder class to aid with construction during
+ * flight generation. Mostly contains simple getters, and a few setters.
+ */
 public class Flight implements Writeable {
 
     private int flightNumber;
@@ -12,7 +18,7 @@ public class Flight implements Writeable {
     private boolean boardingDoorIsClosed;
     private Set<Passenger> bookedPassengers;
     private Set<Passenger> boardingList;
-    private PriorityQueue<Passenger> standbyList;
+    private StandbyList standbyList;
 
     private Flight(Builder builder) {
         this.flightNumber = builder.flightNumber;
@@ -21,7 +27,7 @@ public class Flight implements Writeable {
         this.boardingDoorIsClosed = builder.boardingDoorIsClosed;
         this.bookedPassengers = builder.bookedPassengers;
         this.boardingList = new Set<>();
-        this.standbyList = new PriorityQueue<>();
+        this.standbyList = new StandbyList();
     }
 
     static class Builder {

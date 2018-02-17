@@ -11,6 +11,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/*
+ * This class schedules flight departures uniformly in an observation space
+ * of size 120 + (numberOfFlights * 120). This ensures all passengers will
+ * no earlier than two hours before departure and makes flights (more or less)
+ * independent. Flight departures are scheduled before arrival events so that
+ * passengers must arrive BEFORE the departure time. Once the flights are scheduled,
+ * the boardingDoorClose events and Arrival events are kept in an FEL to be returned
+ * to the model
+ */
 public class FlightScheduler {
 
     private FutureEventList futureEventList;

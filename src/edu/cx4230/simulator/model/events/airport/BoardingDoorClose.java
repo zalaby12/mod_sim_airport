@@ -2,10 +2,16 @@ package edu.cx4230.simulator.model.events.airport;
 
 import edu.cx4230.simulator.model.entity.airport.Flight;
 import edu.cx4230.simulator.model.entity.airport.Passenger;
-import edu.cx4230.simulator.model.events.airport.AirportEvent;
 import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
 
+/*
+ * Simulates a plane departing. This event also asks the model to reschedule passengers
+ * if needed. Semantically, if the flight is overbooked, all overbooked passengers are
+ * placed on another flight. if not, then passengers from the standby list are moved
+ * onto the flight. In either case, the remaining standby passengers are moved to the
+ * next flight.
+ */
 public class BoardingDoorClose extends AirportEvent{
 
     private Flight flight;

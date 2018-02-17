@@ -6,6 +6,14 @@ import edu.cx4230.simulator.model.models.AirportModel;
 import edu.cx4230.simulator.util.Constants;
 import edu.cx4230.simulator.util.Distributions;
 
+/*
+ * Overbooked passengers are put on the standby list for the next flight with the
+ * highest priority. They are also given compensation, an important attribute to
+ * track when the simulation is done. If no flight exists for the passenger to
+ * be transferred to, we are near the end of the simulation: the passenger is
+ * compensated, add to the list that records overbooked passengers, and then
+ * nothing happens.
+ */
 public class RescheduleOverbookedPassenger extends AirportEvent {
 
     private Passenger passenger;

@@ -1,5 +1,10 @@
 package edu.cx4230.simulator.util;
 
+/*
+ * Constants used throughout the app. More useful to give them a descriptive name
+ * here than just random numbers in a script somewhere used for input. This will let
+ * me play with the simulation pretty easily for the final report.
+ */
 public class Constants {
 
     public static final int NUMBER_OF_FLIGHTS = 1000;
