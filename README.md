@@ -15,3 +15,9 @@ in an environment with the java compiler and then copy the jar and output folder
 
 
 To run the tests, add JUnit to the classpath (manually, or through an IDE) and then run the TestSuite. Before handing in, tests were run in IntelliJ both individually and as a Suite. There was a tendancy for IntelliJ to not recognize the TestSuite class, and I more often than not had to execute the test twice for it to produce results. 
+
+
+To see various output included, run 
+  ```
+  java -jar sim.jar -v
+  ```
