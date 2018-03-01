@@ -15,9 +15,11 @@ import static edu.cx4230.simulator.util.Constants.ARRIVAL_WINDOW;
 public class PassengerListGenerator {
 
     private Set<Passenger> bookedPassengers;
+    private int revenueFromBookedList;
     private PassengerStatus[] status = PassengerStatus.values();
 
     public PassengerListGenerator(int flightNumber, int departureTime, int capacity) {
+        this.revenueFromBookedList = 0;
         this.bookedPassengers = bookPassengers(flightNumber, departureTime, capacity);
     }
 
@@ -26,14 +28,16 @@ public class PassengerListGenerator {
         int id = 0;
         Set<Passenger> tempSet = new Set<>();
         for (int i = 0; i < numberOfPassengersBooked; i++, id++) {
-            tempSet.add(new Passenger.Builder()
+            Passenger passenger = new Passenger.Builder()
                     .arrivalTime(Distributions.passengerArrivalDistribution(departureTime, false))
                     .flightNumber(flightNumber)
                     .departureTime(departureTime)
                     .ticketPrice(Distributions.ticketPriceDistribution())
                     .passengerStatus(PassengerStatus.REV)
                     .id("FL" + flightNumber + "-" + departureTime + "-" + id)
-                    .build());
+                    .build();
+            this.revenueFromBookedList += passenger.getTicketPrice();
+            tempSet.add(passenger);
         }
 
         int numberOfStandbyPassengersScheduled = Distributions.standbyListDensityDistribution(capacity);
@@ -59,6 +63,11 @@ public class PassengerListGenerator {
     }
 
     public Set<Passenger> getList() {
-        return bookedPassengers;
+        return this.bookedPassengers;
+    }
+
+    public int getRevenueFromBookedList() {
+        Print.line("total revenue for this passenger list is: " + this.revenueFromBookedList);
+        return this.revenueFromBookedList;
     }
 }

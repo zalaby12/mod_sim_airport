@@ -31,7 +31,9 @@ public class RescheduleLateArrival extends AirportEvent {
         int numberOfBookedPassengersOnNextFlight = nextFlight.getSizeOfBoardingList();
         String newPassengerId = "FL" + this.passenger.getFlightNumber() + "-" +
                 nextFlight.getDepartureTime() + "-" + (numberOfBookedPassengersOnNextFlight + 1);
-        this.passenger.addToTicketPrice(Distributions.ticketPriceDistribution());
+        int ticketPrice = Distributions.ticketPriceDistribution();
+        this.passenger.addToTicketPrice(ticketPrice);
+        model.addToRevenue(ticketPrice);
         this.passenger.setDepartureTime(nextFlight.getDepartureTime());
         this.passenger.setId(newPassengerId);
         nextFlight.addToBoardingList(this.passenger);

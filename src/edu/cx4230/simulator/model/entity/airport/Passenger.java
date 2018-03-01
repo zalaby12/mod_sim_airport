@@ -39,6 +39,8 @@ public class Passenger implements Comparable<Passenger> {
 
     public int getCompensationAmount() { return this.compensationAmount; }
 
+    public int getTicketPrice() { return this.ticketPrice; }
+
     public void addToTicketPrice(int value) { this.ticketPrice += value; }
 
     public void addToCompensationAmount(int value) { this.compensationAmount += value; }

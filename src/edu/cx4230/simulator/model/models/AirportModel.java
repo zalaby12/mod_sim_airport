@@ -27,12 +27,15 @@ public class AirportModel implements Modeler {
     private FlightScheduler scheduler;
     private FutureEventList futureEventList;
     private Set<Passenger> overbookedPassengers;
+    private int totalRevenue;
 
     public AirportModel(int numberOfFlights, int flightsPerRoute) {
         this.scheduler = new FlightScheduler(numberOfFlights, flightsPerRoute);
         this.flights = scheduler.getFlights();
         this.futureEventList = this.scheduler.getEventList();
         this.overbookedPassengers = new Set<>();
+        this.totalRevenue = scheduler.getRevenueFromAllFlights();
+        Print.line("revenue gained before any missed flights: " + this.totalRevenue);
         Print.line("the model scheduled " + this.flights.size() + " flights and " + this.scheduler.getNumPassengers() + " passengers.");
     }
 
@@ -91,6 +94,8 @@ public class AirportModel implements Modeler {
         System.out.println("Percent overbooked: " + (100.0 * this.overbookedPassengers.size() / this.scheduler.getNumPassengers()));
         System.out.println("Their total compensation was " + this.totalCompensation() +
                 " for an an average of $" + (this.totalCompensation() / this.overbookedPassengers.size()));
+        System.out.println("The airline made " + this.totalRevenue + " in gross revenue.");
+        System.out.println("Net profit was " + (this.totalRevenue - this.totalCompensation()));
     }
 
     private int totalCompensation() {
@@ -99,6 +104,10 @@ public class AirportModel implements Modeler {
             sum += passenger.getCompensationAmount();
         }
         return sum;
+    }
+
+    public void addToRevenue(int amount) {
+        this.totalRevenue += amount;
     }
 
 }

@@ -232,9 +232,4 @@ public class SinglyLinkedList<T> implements List<T> {
         };
     }
 
-//    @Override
-//    public void forEach(Consumer<? super T> action) {
-//
-//    }
-
 }

@@ -27,11 +27,13 @@ public class FlightScheduler {
     private int numFlightsScheduled = 0;
     private int numRoutesScheduled = 0;
     private int numPassengers = 0;
+    private int revenueFromAllFlights;
 
     public FlightScheduler(int numberOfFlights, int flightsPerRoute) {
         Print.line("Attempting to create " + numberOfFlights + " flights with approximately " + flightsPerRoute + " flights per route");
         this.futureEventList = new FutureEventList();
         this.listOfFlights = new ArrayList<>(numberOfFlights);
+        this.revenueFromAllFlights = 0;
         this.scheduleFlights(numberOfFlights, flightsPerRoute);
     }
 
@@ -47,6 +49,7 @@ public class FlightScheduler {
             this.numRoutesScheduled++;
             for (int i = 0; flightsScheduled < numberOfFlights && i < flightsPerRoute; i++) {
                 FlightGenerator flightGenerator = new FlightGenerator(flightNumber, Distributions.flightDepartureDistribution());
+                this.revenueFromAllFlights += flightGenerator.getRevenueFromFlight();
                 Print.writer(flightGenerator.getFlight());
                 this.listOfFlights.add(flightGenerator.getFlight());
                 allEvents.add(new BoardingDoorClose(flightGenerator.getFlight()));
@@ -76,5 +79,6 @@ public class FlightScheduler {
     public int getNumFlightsScheduled() { return this.numFlightsScheduled; }
     public int getNumRoutesScheduled() { return this.numRoutesScheduled; }
     public int getNumPassengers() { return this.numPassengers; }
+    public int getRevenueFromAllFlights() { return this.revenueFromAllFlights; }
 
 }
