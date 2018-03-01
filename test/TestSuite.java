@@ -9,7 +9,9 @@ import org.junit.runners.Suite;
 @SuiteClasses(value = {
         DistributionTest.class,
         PriorityQueueTest.class,
-        SchedulingTest.class
+        SchedulingTest.class,
+        LinkedListTest.class,
+        LinkedListTestStudent.class
 })
 
 public abstract class TestSuite {}

@@ -1,8 +1,6 @@
 package edu.cx4230.simulator.structs;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 /*
  * Generic priority queue featuring iteration and sorting. Uses a simple list as
@@ -14,7 +12,7 @@ public class PriorityQueue<T extends Comparable<? super T>> implements Iterable<
     private int size;
 
     public PriorityQueue() {
-        this.backingList = new LinkedList<>();
+        this.backingList = new SinglyLinkedList<>();
         this.size = 0;
     }
 
