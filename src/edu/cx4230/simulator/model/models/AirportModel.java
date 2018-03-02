@@ -92,8 +92,10 @@ public class AirportModel implements Modeler {
         System.out.println("There were " + this.overbookedPassengers.size() +
                 " overbooked passengers out of " + this.scheduler.getNumPassengers());
         System.out.println("Percent overbooked: " + (100.0 * this.overbookedPassengers.size() / this.scheduler.getNumPassengers()));
-        System.out.println("Their total compensation was " + this.totalCompensation() +
-                " for an an average of $" + (this.totalCompensation() / this.overbookedPassengers.size()));
+        if (this.overbookedPassengers.size() != 0) {
+            System.out.println("Their total compensation was " + this.totalCompensation() +
+                    " for an an average of $" + (this.totalCompensation() / this.overbookedPassengers.size()));
+        }
         System.out.println("The airline made " + this.totalRevenue + " in gross revenue.");
         System.out.println("Net profit was " + (this.totalRevenue - this.totalCompensation()));
     }

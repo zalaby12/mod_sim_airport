@@ -37,6 +37,9 @@ public class PassengerListGenerator {
                     .id("FL" + flightNumber + "-" + departureTime + "-" + id)
                     .build();
             this.revenueFromBookedList += passenger.getTicketPrice();
+            if (passenger.getTicketPrice() <= 0) {
+                System.out.println("ticket price negative");
+            }
             tempSet.add(passenger);
         }
 
