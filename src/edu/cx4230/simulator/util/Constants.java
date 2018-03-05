@@ -7,7 +7,7 @@ package edu.cx4230.simulator.util;
  */
 public class Constants {
 
-    public static final int NUMBER_OF_FLIGHTS = 302600;
+    public static final int NUMBER_OF_FLIGHTS = 850;
 
     public static final int NUMBER_OF_FLIGHTS_PER_ROUTE = 10;
 
